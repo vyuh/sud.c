@@ -1,4 +1,4 @@
-#include "die.c" /* includes stdio.h and stdlib.h */
+#include "../die.c" /* includes stdio.h and stdlib.h */
 #include <string.h>
 
 int *scope;
