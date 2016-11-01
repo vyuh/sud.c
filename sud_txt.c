@@ -1,23 +1,32 @@
-void S00D(b8 *in, s00d *puzl) {
-    b16 *eye, idea_v;
-    b8 i;
-    puzl->left = 81;
-    eye = puzl->i_v;
-    for(i=0; i<81 && *in; i++, eye++, in++) {
-        if((idea_v=(*in)-'1')<9) *eye = idea_v|open|may_b[idea_v];
-        else *eye = 0x7fe7;
+void sudoku_init (char *in, sudoku * puzzle) {
+  unsigned short *eye, idea_v;
+  unsigned char i;
+  puzzle->left = 81;
+  eye = puzzle->i_v;
+  for (i = 0; i < 81 && *in; i++, eye++, in++) {
+    if ((idea_v = (*in) - '1') < 9) {
+      *eye = idea_v | open | may_b[idea_v];
+#ifdef LOG
+      fprintf(stderr, "LOG sudoku_init: marked_input_idea, cell: %d, value: %d\n", i, idea_v);
+#endif
     }
-    for(;i<81;i++,eye++) *eye = 0x7fe7;
+    else
+      *eye = 0x7fe7;
+  }
+  for (; i < 81; i++, eye++)
+    *eye = 0x7fe7;
 }
-void STR(b8 *buf, s00d *puzl) {
-    b16 *sun;
-    b8 *eye;
-    b8 i;
-    eye=buf;
-    for (sun=puzl->i_v, i=0; i<81; i++, sun++, eye++) {
-        if ((*sun) & open) *eye = '?';
-        else *eye = (b8)('1' + ((*sun) & data));
-    }
-    *eye = '\n';
-    *(++eye) = '\0';
+void sudoku_to_string (char *buffer, sudoku * puzzle) {
+  unsigned short *sun;
+  char *eye;
+  unsigned char i;
+  eye = buffer;
+  for (sun = puzzle->i_v, i = 0; i < 81; i++, sun++, eye++) {
+    if ((*sun) & open)
+      *eye = '?';
+    else
+      *eye = (unsigned char) ('1' + ((*sun) & data));
+  }
+  *eye = '\n';
+  *(++eye) = '\0';
 }
