@@ -2,9 +2,9 @@ typedef struct {
   unsigned short i_v[81];
   unsigned char left;
 } sudoku;
-unsigned short wait = 0x20;
-unsigned short open = 0x10;
-unsigned short may_b[9] = {
+unsigned short WAIT = 0x20;
+unsigned short OPEN = 0x10;
+unsigned short MAY_B[9] = {
   0x4000, 0x2000, 0x1000,
   0x0800, 0x0400, 0x0200,
   0x0100, 0x0080, 0x0040

@@ -30,7 +30,7 @@ int hook (sudoku * puzzle, dump_struct * dump_structure) {
       if (remove_probable (&(puzzle->i_v[*eye]), val))
         return -1;
     }
-    puzzle->i_v[pos] &= (~open);
+    puzzle->i_v[pos] &= (~OPEN);
 #ifdef LOG
     fprintf(stderr, "LOG hook: lock_current_idea\n");
 #endif
@@ -78,7 +78,7 @@ int crook (sudoku * master, dump_struct * dump_structure) {
   while (dump_structure->stack || cell_value_to_try (mc, &val)) {
     if (!dump_structure->stack) {
       *copy = *master;
-      *cc = (((unsigned short) val) | open | may_b[val]);
+      *cc = (((unsigned short) val) | OPEN | MAY_B[val]);
 #ifdef LOG
       fprintf(stderr, "LOG crook: push_guess, cell: %d, value: %d\n", pos, val);
 #endif
