@@ -114,7 +114,7 @@ int squash (sudoku * puzzle, dump_struct * dump_structure) {
      environment which encapsulates log, dump, count and more */
   int ret;
   do
-    if (ret = hook (puzzle, dump_structure))
+    if ((ret = hook (puzzle, dump_structure)))
       return ret;
   while (!(ret = crook (puzzle, dump_structure)));
   return ret;
