@@ -1,16 +1,28 @@
 # SUDOKU LISTER
-The program gives a sorted list of all solutions that satisfy the
-constraints of an input sudoku grid.
+The program gives a sorted list of
+*all*
+(well, at most 6,670,903,752,021,072,936,960)
+solutions of an input sudoku grid.
+It supports suspending a computation after
+writing out state to a text file.
+It can resume the same computation
+(even on some other computer)
+after reading in the generated text file.
+
+It can be used in mathematical exploration of properties of sudoku.
+or as a *very*
+(
+so I hope,
+and you can't sue me,
+and please tell me if you benchmark it
+)
+fast sudoku solver/generator.
+
 
 ## EXAMPLES
 
     $ make
     $ ./sud 800000000003600000070090200050007000000045700000100030001000068008500010090000400
-
-## USES
-
-It can be used in mathematical exploration of properties of sudoku.
-or as a *very* fast sudoku solver/generator.
 
 ## INPUT
 
